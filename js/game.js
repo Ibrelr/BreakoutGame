@@ -238,6 +238,8 @@ class BreakoutGame {
             this.gameRunning = true;
             this.gamePaused = false;
             this.gameOverElement.style.display = 'none';
+            // Immediately launch the ball - no canvas click needed!
+            this.launchBall();
         }
     }
 
