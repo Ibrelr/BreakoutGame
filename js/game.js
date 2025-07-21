@@ -276,14 +276,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Mobile touch event support for all .btn buttons ---
     function handleTouchStart(e) {
-        // No preventDefault here! (Fixes mobile error)
         this.classList.add('btn--active');
     }
     function handleTouchEnd(e) {
-        // Only preventDefault if needed (e.g., to avoid double-activation)
         this.classList.remove('btn--active');
         if (typeof this.onclick === 'function') {
-            e.preventDefault && e.preventDefault();
             this.onclick();
         }
     }
@@ -292,9 +289,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     var buttons = document.querySelectorAll('.btn');
     buttons.forEach(function(btn) {
-        btn.addEventListener('touchstart', handleTouchStart, {passive: true});
-        btn.addEventListener('touchend', handleTouchEnd, {passive: true});
-        btn.addEventListener('touchcancel', handleTouchCancel, {passive: true});
+        btn.addEventListener('touchstart', handleTouchStart, { passive: true });
+        btn.addEventListener('touchend', handleTouchEnd, { passive: true });
+        btn.addEventListener('touchcancel', handleTouchCancel, { passive: true });
     });
     // --- End mobile touch event support ---
 });
