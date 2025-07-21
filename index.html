@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Breakout Game</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
     <style>
@@ -20,6 +20,8 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            /* Prevent mobile scrolling during gameplay */
+            touch-action: manipulation;
         }
 
         .game-container {
@@ -30,6 +32,8 @@
             padding: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Prevent scrolling on game container */
+            touch-action: none;
         }
 
         h1 {
@@ -45,6 +49,14 @@
             background: #000;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
+            /* Prevent scrolling and zooming on canvas */
+            touch-action: none;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .game-info {
