@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Mobile touch event support for all .btn buttons ---
     function handleTouchStart(e) {
-        // No preventDefault here!
+        // No preventDefault here! (Fixes mobile error)
         this.classList.add('btn--active');
     }
     function handleTouchEnd(e) {
