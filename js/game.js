@@ -273,4 +273,28 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error initializing game:', error);
         alert('Error initializing game: ' + error.message);
     }
+
+    // --- Mobile touch event support for all .btn buttons ---
+    function handleTouchStart(e) {
+        e.preventDefault();
+        this.classList.add('btn--active');
+    }
+    function handleTouchEnd(e) {
+        e.preventDefault();
+        this.classList.remove('btn--active');
+        // Only trigger if touch ends on the same button
+        if (typeof this.onclick === 'function') {
+            this.onclick();
+        }
+    }
+    function handleTouchCancel(e) {
+        this.classList.remove('btn--active');
+    }
+    var buttons = document.querySelectorAll('.btn');
+    buttons.forEach(function(btn) {
+        btn.addEventListener('touchstart', handleTouchStart, {passive: false});
+        btn.addEventListener('touchend', handleTouchEnd, {passive: false});
+        btn.addEventListener('touchcancel', handleTouchCancel);
+    });
+    // --- End mobile touch event support ---
 });
