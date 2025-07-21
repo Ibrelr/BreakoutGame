@@ -43,17 +43,18 @@ class InputHandler {
 
     setupTouchControls(canvas) {
         canvas.addEventListener('touchstart', (e) => {
-            e.preventDefault();
+            // No preventDefault here!
             console.log('Touch start');
-        });
+        }, { passive: true });
         
         canvas.addEventListener('touchmove', (e) => {
-            e.preventDefault();
+            // Only preventDefault if needed (e.g., to avoid scrolling when interacting with canvas)
+            // e.preventDefault(); // Commented out to avoid scroll conflict
             const rect = canvas.getBoundingClientRect();
             const touch = e.touches[0];
             const scaleX = canvas.width / rect.width;
             this.mouseX = (touch.clientX - rect.left) * scaleX;
             console.log('Touch moved to:', this.mouseX);
-        });
+        }, { passive: true });
     }
 }
